@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>مقارنة ملفات PDF</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f4f6f9;color:#172033;font-family:Arial,Tahoma,sans-serif}.app{max-width:1100px;margin:auto;padding:16px}.hero{background:linear-gradient(135deg,#0f766e,#15803d);color:#fff;border-radius:22px;padding:22px;margin-bottom:16px}.hero h1{margin:0 0 8px;font-size:28px}.hero p{margin:0;line-height:1.8}.badge{display:inline-block;margin-top:10px;background:#ffffff22;padding:7px 12px;border-radius:20px}.upload-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.upload-card{background:#fff;border:2px dashed #cbd5e1;border-radius:18px;padding:20px;box-shadow:0 4px 15px #00000009}.icon{font-size:32px}.upload-card strong{display:block;font-size:19px;margin:8px 0}.upload-card input{width:100%;margin:12px 0}.file-name{color:#667085;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.actions{display:flex;gap:10px;margin:16px 0}.actions button{border:0;border-radius:13px;padding:14px 22px;font-size:17px;font-weight:bold}.primary{background:#16835f;color:#fff;flex:1}.secondary{background:#e4e7ec;color:#344054}.progress-box,.results{background:#fff;border-radius:18px;padding:16px;margin:15px 0}.progress{height:9px;background:#e5e7eb;border-radius:10px;overflow:hidden;margin-top:10px}.progress div{height:100%;width:0;background:#16835f;transition:width .2s}.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:15px 0}.stat{background:#f8fafc;border-radius:15px;padding:16px;text-align:center}.stat b{display:block;font-size:32px}.stat span{color:#667085}.green b{color:#16835f}.red b{color:#c0392b}.yellow b{color:#b77900}.toolbar input{width:100%;padding:14px;border:1px solid #d0d5dd;border-radius:12px;font-size:16px;margin-bottom:15px}.section-title{margin:20px 0 10px;font-size:22px}.record-card{background:#fff;border:1px solid #e5e7eb;border-radius:15px;margin:10px 0;padding:14px;box-shadow:0 3px 12px #00000008}.record-title{display:flex;align-items:center;gap:9px;margin-bottom:12px}.record-title small{margin-right:auto;color:#667085}.number{width:31px;height:31px;border-radius:50%;background:#eef2f6;display:inline-flex;align-items:center;justify-content:center}.field-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.field{background:#f8fafc;border-radius:10px;padding:10px}.field span{display:block;color:#667085;font-size:13px;margin-bottom:5px}.added-card{border-right:4px solid #16835f}.removed-card{border-right:4px solid #c0392b}.changed-card{border-right:4px solid #b77900}.field.different{background:#fff7d6}.old-val{color:#c0392b}.new-val{color:#16835f}.arrow{color:#98a2b3;margin:0 5px}.empty{text-align:center;padding:25px;color:#98a2b3}.message{text-align:center;padding:12px;color:#475467}.hidden{display:none!important}footer{text-align:center;color:#98a2b3;padding:18px}@media(max-width:700px){.app{padding:11px}.upload-grid{grid-template-columns:1fr}.summary{grid-template-columns:1fr 1fr}.summary .stat:last-child{grid-column:1/-1}.field-grid{grid-template-columns:1fr}.hero h1{font-size:24px}.actions{flex-direction:column}}
+</style>
+</head>
+<body><div class="app">
+<header class="hero"><h1>مقارنة ملفات PDF</h1><p>يقارن الملف القديم بالملف الجديد ويظهر كل اختلاف فقط.</p><div class="badge">الجديد • المحذوف • المتغير — السجلات المطابقة لا تظهر</div></header>
+<section class="upload-grid">
+<label class="upload-card"><span class="icon">📄</span><strong>الملف القديم</strong><input id="oldFile" type="file" accept=".pdf,application/pdf"><span id="oldName" class="file-name">لم يتم اختيار ملف</span></label>
+<label class="upload-card"><span class="icon">📄</span><strong>الملف الجديد</strong><input id="newFile" type="file" accept=".pdf,application/pdf"><span id="newName" class="file-name">لم يتم اختيار ملف</span></label>
+</section>
+<div class="actions"><button id="compareBtn" class="primary">🔎 إظهار كل الاختلافات</button><button id="clearBtn" class="secondary">مسح</button></div>
+<div id="progressBox" class="progress-box hidden"><div id="progressText">جاري القراءة...</div><div class="progress"><div id="progressBar"></div></div></div>
+<section id="resultsSection" class="results hidden">
+<div class="toolbar"><input id="searchInput" type="search" placeholder="ابحث بالاسم أو رقم البطاقة..."></div>
+<div class="summary"><div class="stat green"><b id="addedCount">0</b><span>جديد مضاف</span></div><div class="stat red"><b id="removedCount">0</b><span>محذوف</span></div><div class="stat yellow"><b id="changedCount">0</b><span>متغير</span></div></div>
+<h2 class="section-title">🟢 السجلات الجديدة المضافة</h2><div id="addedList"></div>
+<h2 class="section-title">🔴 السجلات المحذوفة</h2><div id="removedList"></div>
+<h2 class="section-title">🟡 السجلات المتغيرة</h2><div id="changedList"></div>
+</section><div id="message" class="message"></div><footer>تتم معالجة ملفات PDF داخل المتصفح.</footer>
+</div><script src="app.js"></script></body></html>
